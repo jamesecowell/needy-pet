@@ -26,4 +26,6 @@ flutter:
     - family: PressStart2P
       fonts:
         - asset: fonts/PressStart2P-Regular.ttf
+  assets:
+    - images/pixil-cat.png
 
