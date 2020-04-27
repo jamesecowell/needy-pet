@@ -1,14 +1,31 @@
 import 'package:flutter/material.dart';
 
-class GoalSetter extends StatefulWidget {
-  @override
-  _GoalSetterState createState() => _GoalSetterState();
-}
-
-class _GoalSetterState extends State<GoalSetter> {
+class GoalSetter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Scaffold(
+      body: GoalForm(),
+      backgroundColor: Colors.purple,
+    );
+  }
+}
+
+class GoalForm extends StatefulWidget {
+  @override
+  _GoalFormState createState() {
+    return _GoalFormState();
+  }
+}
+
+class _GoalFormState extends State<GoalForm> {
+  final _formKey = GlobalKey<FormState>();
+
+  // TODO: Add better layout/constraints, display creature image in container
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
       child: Column(
         children: <Widget>[
           Padding(
