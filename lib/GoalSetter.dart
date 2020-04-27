@@ -18,6 +18,9 @@ class GoalForm extends StatefulWidget {
 }
 
 class _GoalFormState extends State<GoalForm> {
+  String _petName;
+  String _goalName;
+
   final _formKey = GlobalKey<FormState>();
 
   // TODO: Add better layout/constraints, handle form submit
@@ -59,7 +62,15 @@ class _GoalFormState extends State<GoalForm> {
           ),
           Padding(
             padding: const EdgeInsets.all(30.0),
-            child: TextField(
+            child: TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter a name!';
+                }
+              },
+              onSaved: (String value) {
+                _petName = value;
+              },
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(
@@ -90,7 +101,15 @@ class _GoalFormState extends State<GoalForm> {
           ),
           Padding(
             padding: const EdgeInsets.all(30.0),
-            child: TextField(
+            child: TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter a goal!';
+                }
+              },
+              onSaved: (String value) {
+                _goalName = value;
+              },
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(
@@ -111,7 +130,12 @@ class _GoalFormState extends State<GoalForm> {
           ),
           FlatButton(
             onPressed: () {
-              print('next button pressed');
+              if (_formKey.currentState.validate()) {
+                print('form is valid');
+                _formKey.currentState.save();
+              }
+              print(_petName);
+              print(_goalName);
             },
             child: Text(
               'NEXT',
