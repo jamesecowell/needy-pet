@@ -9,12 +9,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  cloud_firestore: ^0.13.5 # new
 
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
 
 flutter:
   uses-material-design: true
@@ -23,6 +26,6 @@ flutter:
     - family: PressStart2P
       fonts:
         - asset: fonts/PressStart2P-Regular.ttf
-
   assets:
     - images/pixil-cat.png
+
