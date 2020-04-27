@@ -20,7 +20,7 @@ class GoalForm extends StatefulWidget {
 class _GoalFormState extends State<GoalForm> {
   final _formKey = GlobalKey<FormState>();
 
-  // TODO: Add better layout/constraints, display creature image in container
+  // TODO: Add better layout/constraints, display creature image in container, handle form submit
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class _GoalFormState extends State<GoalForm> {
               borderRadius: BorderRadius.circular(10),
               color: Colors.grey,
             ),
-            // child: Image.asset('images/pixil-cat.png'),
+            child: Image.asset('images/pixil-cat.png'),
           ),
           Padding(
             padding: const EdgeInsets.all(30.0),
