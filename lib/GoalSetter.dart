@@ -92,6 +92,19 @@ class _GoalSetterState extends State<GoalSetter> {
               ),
             ),
           ),
+          FlatButton(
+            onPressed: () {
+              print('next button pressed');
+            },
+            child: Text(
+              'NEXT',
+              style: TextStyle(
+                fontFamily: 'PressStart2P',
+                fontSize: 24,
+                color: Colors.white,
+              ),
+            ),
+          ),
         ],
       ),
     );
