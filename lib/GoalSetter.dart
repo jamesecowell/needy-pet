@@ -20,7 +20,7 @@ class GoalForm extends StatefulWidget {
 class _GoalFormState extends State<GoalForm> {
   final _formKey = GlobalKey<FormState>();
 
-  // TODO: Add better layout/constraints, display creature image in container, handle form submit
+  // TODO: Add better layout/constraints, handle form submit
 
   @override
   Widget build(BuildContext context) {
