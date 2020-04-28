@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:needy_pet/Welcome.dart';
 
 void main() {
   return runApp(
@@ -15,6 +16,7 @@ void main() {
           ),
           backgroundColor: Colors.purple,
         ),
+        body: Welcome()
       ),
     ),
   );
