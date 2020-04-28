@@ -16,8 +16,10 @@ void main() {
           ),
           backgroundColor: Colors.purple,
         ),
-        body: Welcome()
+        body: Center(
+          child: Text('Hello World'),
+        ),
       ),
-    ),
-  );
+      )
+    );
 }
