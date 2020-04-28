@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+
 import './HabitChecker.dart';
+
+import 'package:needy_pet/Welcome.dart';
+
 
 void main() {
    runApp(
@@ -16,8 +20,12 @@ void main() {
           ),
           backgroundColor: Colors.purple,
         ),
-        body: HabitChecker(),
+
+        body: Center(
+          child: Text('Hello World'),
+        ),
+
       ),
-    ),
-  );
+      )
+    );
 }
