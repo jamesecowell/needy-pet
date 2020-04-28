@@ -85,23 +85,7 @@ class MyCustomFormState extends State<MyCustomForm> {
             child: FlatButton(
               onPressed: () {
                 if (_formKey.currentState.validate()) {
-                  addNewHabit(newHabitController.text);
-                  // dbRef.push().set({"habit": newHabitController}).then((_) {
-                  //   Scaffold.of(context).showSnackBar(
-                  //     SnackBar(
-                  //       content: Text('Habit Added!'),
-                  //     ),
-                  //   );
-                  //   newHabitController.clear();
-                  // }).catchError((onError) {
-                  //   Scaffold.of(context).showSnackBar(
-                  //     SnackBar(
-                  //       content: Text(onError),
-                  //     ),
-                  //   );
-                  // });
-                  Scaffold.of(context).showSnackBar(
-                      SnackBar(content: Text('Submitting Habit...')));
+                  addNewHabit(newHabitController);
                 }
               },
               child: Text(
@@ -118,10 +102,21 @@ class MyCustomFormState extends State<MyCustomForm> {
     );
   }
 
-  void addNewHabit(habit) async {
-    await dbRef.collection('new_habit').document().setData({'habit': habit});
-    DocumentReference ref =
-        await dbRef.collection('books').add({'habit': habit});
-    print(ref.documentID);
+  void addNewHabit(habit) {
+    dbRef.collection('new_habit').add({'habit': habit.text}).then((res) {
+      print(res.documentID);
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Habit Added!'),
+        ),
+      );
+      habit.clear();
+    }).catchError((err) {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text(err),
+        ),
+      );
+    });
   }
 }
