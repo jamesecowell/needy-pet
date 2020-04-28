@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+
+import './HabitChecker.dart';
+
 import 'package:needy_pet/Welcome.dart';
 
+
 void main() {
-  return runApp(
+   runApp(
     MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.purple,
@@ -16,9 +20,11 @@ void main() {
           ),
           backgroundColor: Colors.purple,
         ),
+
         body: Center(
           child: Text('Hello World'),
         ),
+
       ),
       )
     );
