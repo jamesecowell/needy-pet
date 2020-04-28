@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class NewHabit extends StatelessWidget {
   @override
@@ -19,6 +20,8 @@ class MyCustomForm extends StatefulWidget {
 
 class MyCustomFormState extends State<MyCustomForm> {
   final _formKey = GlobalKey<FormState>();
+  final newHabitController = TextEditingController();
+  final dbRef = Firestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +55,7 @@ class MyCustomFormState extends State<MyCustomForm> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              controller: newHabitController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(
@@ -81,8 +85,7 @@ class MyCustomFormState extends State<MyCustomForm> {
             child: FlatButton(
               onPressed: () {
                 if (_formKey.currentState.validate()) {
-                  Scaffold.of(context).showSnackBar(
-                      SnackBar(content: Text('Submitting Habit...')));
+                  addNewHabit(newHabitController);
                 }
               },
               child: Text(
@@ -97,5 +100,23 @@ class MyCustomFormState extends State<MyCustomForm> {
         ],
       ),
     );
+  }
+
+  void addNewHabit(habit) {
+    dbRef.collection('new_habit').add({'habit': habit.text}).then((res) {
+      print(res.documentID);
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Habit Added!'),
+        ),
+      );
+      habit.clear();
+    }).catchError((err) {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text(err),
+        ),
+      );
+    });
   }
 }
