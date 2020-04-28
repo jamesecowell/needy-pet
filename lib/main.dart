@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import './HabitChecker.dart';
 
 void main() {
-  return runApp(
+   runApp(
     MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.purple,
@@ -15,6 +16,7 @@ void main() {
           ),
           backgroundColor: Colors.purple,
         ),
+        body: HabitChecker(),
       ),
     ),
   );
