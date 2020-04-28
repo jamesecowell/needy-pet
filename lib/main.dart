@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:needy_pet/Welcome.dart';
+import 'package:needy_pet/MyHabits.dart';
 
 void main() {
-  return runApp(
-    MaterialApp(
-      home: Scaffold(
+  return runApp(MaterialApp(
+    home: Scaffold(
         backgroundColor: Colors.purple,
         appBar: AppBar(
           title: Text(
@@ -16,10 +16,6 @@ void main() {
           ),
           backgroundColor: Colors.purple,
         ),
-        body: Center(
-          child: Text('Hello World'),
-        ),
-      ),
-      )
-    );
+        body: Welcome()),
+  ));
 }
