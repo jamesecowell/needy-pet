@@ -29,7 +29,7 @@ class SignInFormState extends State<SignInForm> {
       child: Column(
         children: <Widget>[
           Text(
-            'Hi there! Please sign in or create an account to continue.',
+            'Sign in or create an account.',
             style: TextStyle(
                 fontFamily: 'PressStart2P',
                 color: Colors.black,
@@ -38,59 +38,66 @@ class SignInFormState extends State<SignInForm> {
           Form(
             key: _formKey,
             child: Column(children: <Widget>[
-              TextFormField(
-                controller: usernameController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: TextFormField(
+                  controller: usernameController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
                     ),
+                    filled: true,
+                    fillColor: Colors.grey,
+                    hintText: 'username',
                   ),
-                  filled: true,
-                  fillColor: Colors.grey,
-                  hintText: 'username',
+                  style: TextStyle(
+                    fontFamily: 'PressStart2P',
+                    color: Colors.black,
+                    fontSize: 16.0,
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please enter username';
+                    }
+                    return null;
+                  },
                 ),
-                style: TextStyle(
-                  fontFamily: 'PressStart2P',
-                  color: Colors.black,
-                  fontSize: 16.0,
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please enter username';
-                  }
-                  return null;
-                },
               ),
-              TextFormField(
-                controller: passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: TextFormField(
+                  controller: passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
                     ),
+                    filled: true,
+                    fillColor: Colors.grey,
+                    hintText: 'password',
                   ),
-                  filled: true,
-                  fillColor: Colors.grey,
-                  hintText: 'password',
+                  style: TextStyle(
+                    fontFamily: 'PressStart2P',
+                    color: Colors.black,
+                    fontSize: 16.0,
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please enter password';
+                    }
+                    return null;
+                  },
                 ),
-                style: TextStyle(
-                  fontFamily: 'PressStart2P',
-                  color: Colors.black,
-                  fontSize: 16.0,
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please enter password';
-                  }
-                  return null;
-                },
               ),
               FlatButton(
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     print('valid sign in');
+                    checkCredentials(usernameController, passwordController);
                   }
                 },
                 child: Text(
@@ -103,8 +110,25 @@ class SignInFormState extends State<SignInForm> {
               ),
             ]),
           ),
+          Spacer(),
+          FlatButton(
+            onPressed: () {
+              print('create account pressed');
+            },
+            child: Text(
+              'Create Account >',
+              style: TextStyle(
+                fontFamily: 'PressStart2P',
+                color: Colors.black,
+              ),
+            ),
+          ),
         ],
       ),
     );
+  }
+
+  void checkCredentials(user, pass) {
+    print('checking credentials');
   }
 }
